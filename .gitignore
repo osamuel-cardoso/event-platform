@@ -1,0 +1,14 @@
+.node_modules
+.DS_Store
+
+*.local
+*.log
+/.vscode/
+
+/docs/.vitepress/cache
+
+/packages/vite/LICENSE
+
+dist
+node_modules
+.eslintcache

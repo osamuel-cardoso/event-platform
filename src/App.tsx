@@ -1,8 +1,12 @@
+import { ApolloProvider } from '@apollo/client'
+import { client } from './lib/apollo'
+import { Event } from './pages/Event'
+
 function App() {
   return (
-    <div className="flex flex-col justify-between items-center w-full h-full">
-      <h1>Hello World</h1>
-    </div>
+    <ApolloProvider client={client}>
+      <Event />
+    </ApolloProvider>
   )
 }
 
