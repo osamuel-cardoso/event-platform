@@ -1,3 +1,16 @@
+import { Container } from '../components/Container/Container'
+import { Header } from '../components/Header/Header'
+import { Sidebar } from '../components/Sidebar/Sidebar'
+import { Video } from '../components/Video/Video'
+
 export function Event() {
-  return <div>Event</div>
+  return (
+    <>
+      <Header />
+      <Container classStyle="flex">
+        <Video />
+        <Sidebar />
+      </Container>
+    </>
+  )
 }

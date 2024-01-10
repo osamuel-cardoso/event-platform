@@ -2,6 +2,10 @@
 export default {
   content: ['./src/**/*.tsx'],
   theme: {
+    fontFamily: {
+      roboto: ['Roboto', 'sans-serif'],
+    },
+
     extend: {
       colors: {
         green: {

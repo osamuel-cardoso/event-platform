@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+html{
+  @apply bg-gray-700 font-roboto;
+  -webkit-font-smoothing: antialiased;
+}
+
 body{
-  @apply bg-zinc-900 text-zinc-50;
+  @apply text-zinc-50;
 }
