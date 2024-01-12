@@ -9,7 +9,12 @@ export function Container({
   className?: string | undefined
 }) {
   return (
-    <div className={twMerge('w-full max-w-[90.75rem] px-3', `${className}`)}>
+    <div
+      className={twMerge(
+        'w-full max-w-[90.75rem] mx-auto px-3',
+        `${className}`,
+      )}
+    >
       {children}
     </div>
   )

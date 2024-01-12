@@ -7,12 +7,13 @@ export function Event() {
   return (
     <>
       <Header />
-      <div className="flex">
-        <Container className="flex-1">
+
+      <Container>
+        <div className="flex">
           <Video />
-        </Container>
-        <Sidebar />
-      </div>
+          <Sidebar />
+        </div>
+      </Container>
     </>
   )
 }
