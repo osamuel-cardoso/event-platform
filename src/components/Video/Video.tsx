@@ -1,5 +1,5 @@
-import '@vime/core/themes/default.css'
-import { DefaultUi, Player, Youtube } from '@vime/react'
+import { gql, useQuery } from '@apollo/client'
+
 import {
   CaretRight,
   DiscordLogo,
@@ -8,44 +8,68 @@ import {
   Lightning,
 } from 'phosphor-react'
 
-export function Video() {
+const GET_LESSON_BY_SLUG_QUERY = gql`
+  query GetLessonBySlug($slug: String) {
+    lesson(where: { slug: $slug }) {
+      title
+      videoId
+      description
+      teacher {
+        name
+        avatarURL
+        bio
+      }
+    }
+  }
+`
+
+interface GetLessonBySlugResponse {
+  lesson: {
+    title: string
+    videoId: string
+    description: string
+    teacher: {
+      name: string
+      avatarURL: string
+      bio: string
+    }
+  }
+}
+
+export function Video({ lessonSlug }: { lessonSlug: string }) {
+  const { data } = useQuery<GetLessonBySlugResponse>(GET_LESSON_BY_SLUG_QUERY, {
+    variables: {
+      slug: lessonSlug,
+    },
+  })
+
   return (
     <main className="max-w-[68.75rem]">
       <div className="bg-black">
-        <div className="h-full w-full min-w-[60vh] mx-auto aspect-video">
-          <Player>
-            <Youtube videoId="C1CyJW2D0zY" />
-            <DefaultUi />
-          </Player>
-        </div>
+        <div className="h-full w-full min-w-[60vh] mx-auto aspect-video"></div>
       </div>
 
       <div className="p-8 max-w-[68.75rem] mx-auto">
         <div className="flex items-start gap-16">
           <div className="flex-1">
-            <h1 className="text-2xl font-bold ">
-              Aula -1 | abertura do ignite-lab
-            </h1>
+            <h1 className="text-2xl font-bold ">{data?.lesson.title}</h1>
             <p className="mt-4 text-gray-200 leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-              necessitatibus repellendus fugit, sit itaque aut doloremque rem
-              quos deserunt natus, consequatur autem iure quisquam officia
-              assumenda minus explicabo et aliquid.
+              {data?.lesson.description}
             </p>
 
             <div className="flex items-center gap-4 mt-6">
               <img
                 className="h-16 w-16 rounded-full text-2xl block "
-                src="https://github.com/diego3g.png"
+                src={data?.lesson.teacher.avatarURL}
                 alt=""
               />
 
               <div className="leading-relaxed">
                 <strong className="font-bold text-2xl block">
-                  Diego Fernandes
+                  {data?.lesson.teacher.name}
                 </strong>
                 <span className="text-gray-200 text-sm block">
-                  CTO @Rocketseat
+                  {data?.lesson.teacher.bio}
                 </span>
               </div>
             </div>

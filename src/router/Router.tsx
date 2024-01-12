@@ -5,7 +5,8 @@ export function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Event />} />
+        <Route path="/event" element={<Event />} />
+        <Route path="/event/lesson/:slug" element={<Event />} />
       </Routes>
     </BrowserRouter>
   )
