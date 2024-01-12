@@ -1,14 +1,15 @@
 import { ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export function Container({
   children,
-  classStyle,
+  className,
 }: {
   children: ReactNode
-  classStyle?: string
+  className?: string | undefined
 }) {
   return (
-    <div className={`w-full max-w-[90.75rem] px-3 ${classStyle}`}>
+    <div className={twMerge('w-full max-w-[90.75rem] px-3', `${className}`)}>
       {children}
     </div>
   )

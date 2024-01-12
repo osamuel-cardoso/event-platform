@@ -7,8 +7,8 @@ export function Event() {
   return (
     <>
       <Header />
-      <div className="flex ">
-        <Container>
+      <div className="flex">
+        <Container className="flex-1">
           <Video />
         </Container>
         <Sidebar />
